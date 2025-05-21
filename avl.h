@@ -33,6 +33,8 @@ struct _avl {
     int dado;            /* dado armazenado */
     struct _avl* esq;    /* filho da esquerda */
     struct _avl* dir;    /* filho da direita */
+
+    int altura;          /* altura do nó */
 };
 
 /* define o tipo avl_t, derivado da 'struct _avl' */
@@ -61,5 +63,23 @@ int avl_vazia( avl_t* a );
 /* busca um elemento na avl.
 */
 int avl_busca( avl_t* a, int dado );
+
+/* retorna altura */
+inline int avl_altura( const avl_t* const a )
+{
+    return a->altura;
+}
+
+/* retorna Fator de Balanceamento */
+inline int avl_get_fb( const avl_t* const esq, const avl_t* const dir )
+{
+    return (avl_altura(esq) - avl_altura(dir));
+}
+
+/* faz uma rotacao simples a esquerda */
+avl_t* avl_rotacao_esq( avl_t* a );
+
+/* faz uma rotacao simples a direita */
+avl_t* avl_rotacao_dir( avl_t* a );
 
 void avl_imprime(avl_t* a);

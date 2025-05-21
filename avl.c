@@ -40,6 +40,7 @@ avl_t* avl_insere( avl_t* a, int dado )
 		a = (avl_t*)malloc(sizeof(avl_t));
 		a->esq = a->dir = NULL;
 		a->dado = dado;
+		a->altura = 0;
 		return a;
 	}
 
@@ -47,7 +48,26 @@ avl_t* avl_insere( avl_t* a, int dado )
 		a->dir = avl_insere( a->dir, dado );
 	else if ( dado < a->dado )
 		a->esq = avl_insere( a->esq, dado );
+
+	/* TODO atualiza a altura do nó */
+
+	/* TODO verifica FB e efetua rotacoes */
 	
+	return a;
+}
+
+
+/* faz uma rotacao simples a esquerda */
+avl_t* avl_rotacao_esq( avl_t* a )
+{
+	/* TODO */
+	return a;
+}
+
+/* faz uma rotacao simples a direita */
+avl_t* avl_rotacao_dir( avl_t* a )
+{
+	/* TODO */
 	return a;
 }
 
@@ -73,6 +93,9 @@ int avl_vazia( avl_t* a )
 
 int avl_busca( avl_t* a, int dado )
 {
+	if( a == NULL)
+		return 0;
+
 	if( a->dado == dado )
 		return 1;
 	else if (dado > a->dado)

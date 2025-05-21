@@ -53,146 +53,62 @@ TEST_CASE("Caso 1") {
     a = avl_insere(a, 7);
     REQUIRE(avl_vazia(a) != 1);
 
-    // remove folha da esquerda
-    REQUIRE(avl_busca(a, 3) == 1);
-    a = avl_remove(a, 3);
-    REQUIRE(avl_vazia(a) != 1);
-    REQUIRE(avl_busca(a, 3) != 1);
+    // verifica raiz
+    REQUIRE(a->dado == 5);
 
     avl_destroi(a);
 }
 
-TEST_CASE("Caso 2") {
+TEST_CASE("Caso ER") {
     avl_t* a;
 
-    // entrada: {5, 3, 7}
+    // entrada: {1, 2, 3}
     a = avl_cria();
-    a = avl_insere(a, 5);
+    a = avl_insere(a, 1);
+    a = avl_insere(a, 2);
     a = avl_insere(a, 3);
+    REQUIRE(avl_vazia(a) != 1);
+
+    // verifica raiz
+    REQUIRE(a->dado == 2);
+
+    avl_destroi(a);
+}
+
+TEST_CASE("Caso DR") {
+    avl_t* a;
+
+    // entrada: {3, 2, 1}
+    a = avl_cria();
+    a = avl_insere(a, 3);
+    a = avl_insere(a, 2);
+    a = avl_insere(a, 1);
+    REQUIRE(avl_vazia(a) != 1);
+
+    // verifica raiz
+    REQUIRE(a->dado == 2);
+
+    avl_destroi(a);
+}
+
+TEST_CASE("Caso DR-DR") {
+    avl_t* a;
+
+    // entrada: {9, 8, 7, 6, 5, 4, 3, 2, 1}
+    a = avl_cria();
+    a = avl_insere(a, 9);
+    a = avl_insere(a, 8);
     a = avl_insere(a, 7);
-    REQUIRE(avl_vazia(a) != 1);
-
-    // remove folha da direita
-    REQUIRE(avl_busca(a, 7) == 1);
-    a = avl_remove(a, 7);
-    REQUIRE(avl_vazia(a) != 1);
-    REQUIRE(avl_busca(a, 7) != 1);
-
-    avl_destroi(a);
-}
-
-TEST_CASE("Caso 3") {
-    avl_t* a;
-
-    // entrada: {5, 3, 7}
-    a = avl_cria();
+    a = avl_insere(a, 6);
     a = avl_insere(a, 5);
-    a = avl_insere(a, 3);
-    a = avl_insere(a, 7);
-    REQUIRE(avl_vazia(a) != 1);
-
-    // remove raiz
-    REQUIRE(avl_busca(a, 5) == 1);
-    a = avl_remove(a, 5);
-    REQUIRE(avl_vazia(a) != 1);
-    REQUIRE(avl_busca(a, 5) != 1);
-
-    avl_destroi(a);
-}
-
-
-
-TEST_CASE("Caso 4") {
-    avl_t* a;
-
-    a = avl_cria();
-    a = avl_insere(a, 6);
-    a = avl_insere(a, 2);
-    a = avl_insere(a, 8);
-    a = avl_insere(a, 1);
     a = avl_insere(a, 4);
     a = avl_insere(a, 3);
-    REQUIRE(avl_vazia(a) != 1);
-
-    // caso 1 visto em aula
-    REQUIRE(avl_busca(a, 3) == 1);
-    a = avl_remove(a, 3);
-    REQUIRE(avl_vazia(a) != 1);
-    REQUIRE(avl_busca(a, 3) != 1);
-
-
-    avl_destroi(a);
-}
-
-TEST_CASE("Caso 5") {
-    avl_t* a;
-
-    a = avl_cria();
-    a = avl_insere(a, 6);
-    a = avl_insere(a, 2);
-    a = avl_insere(a, 8);
-    a = avl_insere(a, 1);
-    a = avl_insere(a, 4);
-    a = avl_insere(a, 3);
-    REQUIRE(avl_vazia(a) != 1);
-
-    // caso 2 visto em aula
-    REQUIRE(avl_busca(a, 4) == 1);
-    a = avl_remove(a, 4);
-    REQUIRE(avl_vazia(a) != 1);
-    REQUIRE(avl_busca(a, 4) != 1);
-
-
-    avl_destroi(a);
-}
-
-TEST_CASE("Caso 6") {
-    avl_t* a;
-
-    a = avl_cria();
-    a = avl_insere(a, 6);
-    a = avl_insere(a, 2);
-    a = avl_insere(a, 8);
-    a = avl_insere(a, 1);
-    a = avl_insere(a, 4);
-    a = avl_insere(a, 3);
-    REQUIRE(avl_vazia(a) != 1);
-
-    // caso 1 visto em aula
-    REQUIRE(avl_busca(a, 6) == 1);
-    a = avl_remove(a, 6);
-    REQUIRE(avl_vazia(a) != 1);
-    REQUIRE(avl_busca(a, 6) != 1);
-
-
-    avl_destroi(a);
-}
-
-TEST_CASE("Caso 7") {
-    avl_t* a;
-
-    a = avl_cria();
-    a = avl_insere(a, 20);
     a = avl_insere(a, 2);
     a = avl_insere(a, 1);
-    a = avl_insere(a, 4);
-    a = avl_insere(a, 3);
-    a = avl_insere(a, 40);
-    a = avl_insere(a, 30);
-    a = avl_insere(a, 25);
-    a = avl_insere(a, 35);
-    a = avl_insere(a, 50);
-    a = avl_insere(a, 45);
-    a = avl_insere(a, 55);
     REQUIRE(avl_vazia(a) != 1);
 
-    // variacao do ultimo slide da aula, remove 40
-    REQUIRE(avl_busca(a, 40) == 1);
-    a = avl_remove(a, 40);
-    REQUIRE(avl_vazia(a) != 1);
-    REQUIRE(avl_busca(a, 40) != 1);
-
+    // verifica raiz
+    REQUIRE(a->dado == 6);
 
     avl_destroi(a);
 }
-
