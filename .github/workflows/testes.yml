@@ -16,12 +16,12 @@ jobs:
     - name: Instala valgrind
       run: sudo apt install -y valgrind
     - name: Compila catch
-      run: g++ -Wall -g -c catch_amalgamated.cpp
+      run: g++ -Wall -O2 -g -c catch_amalgamated.cpp
     - name: Compila testes
-      run: g++ -Wall -g -c testes.cpp
+      run: g++ -Wall -O2 -g -c testes.cpp
     - name: Compila AVL
-      run: gcc -Wall -g -c avl.c
+      run: gcc -Wall -O2 -g -c avl.c
     - name: Programa final
-      run: g++ -Wall -g avl.o testes.o  catch_amalgamated.o
+      run: g++ -Wall -O2 -g avl.o testes.o  catch_amalgamated.o
     - name: Roda testes no valgrind
       run: valgrind --leak-check=full ./a.out --reporter compact --success
